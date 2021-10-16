@@ -7,13 +7,13 @@ impl Solution {
         let mut prefix = String::new();
 
         for p in 0.. {
-            let ch = match strs.first().unwrap().chars().nth(p) {
+            let ch = match strs.first().unwrap().as_bytes().get(p) {
                 None => break,
                 Some(c) => c,
             };
 
-            if strs.iter().all(|s| s.chars().nth(p) == Some(ch)) {
-                prefix.push(ch);
+            if strs.iter().all(|s| s.as_bytes().get(p) == Some(ch)) {
+                prefix.push(*ch as char);
             } else {
                 break;
             }
